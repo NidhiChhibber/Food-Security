@@ -10,4 +10,5 @@ Steps:
 	Device Name : Select anything (Preferably Pixel 3/ Pixel 3 XL)
 	Download System Image: Any with API Level >28
 5. Once the image is downloaded, select the downloaded device image here and run the emulator 
+![Alt Text](/readmeImg.png)
  
