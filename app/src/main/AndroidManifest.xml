@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.research_app">
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBPQyJVYSaCNift5lq11womLX7aUrMLakk" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:fullBackupOnly="false"
+        android:hasFragileUserData="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FoodDonate"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".VerifyPhoneActivity"></activity>
+        <activity android:name=".VerificationActivity" />
+        <activity android:name=".CreateProfileActivity2" />
+        <activity android:name=".ConsumerActivities.ConsumerProfileActivity" />
+        <activity android:name=".DonorActivities.FreeformSearchActivity" />
+        <activity android:name=".DonorActivities.SelectCity" />
+        <activity android:name=".DonorActivities.DonorHome" />
+        <activity android:name=".DonorActivities.SearchActivity" />
+        <activity android:name=".DonorActivities.SearchByItemAcitivity" />
+        <activity android:name=".DonorActivities.NewConsumerPublicProfileActivity" />
+        <activity android:name=".ConsumerActivities.ConsumerRequestItemActivity" />
+        <activity android:name=".ConsumerActivities.ConsumerBaseDrawerActivity" />
+        <activity
+            android:name=".ConsumerActivities.ConsumerDash"
+            android:label="Home" />
+        <activity android:name=".DonorActivities.ConsumerPublicProfileActivity" />
+        <activity android:name=".DonorActivities.DonorProfile" />
+        <activity
+            android:name=".DonorActivities.DonorCart"
+            android:label="Donation Cart" />
+        <activity
+            android:name=".DonorActivities.DonorSearch"
+            android:label="Search" />
+        <activity android:name=".DonorActivities.BaseDrawerActivity" />
+        <activity
+            android:name=".DonorActivities.DonorDash"
+            android:label="Home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateProfileActivity"
+            android:label="Setup Profile" />
+        <activity
+            android:name=".MainActivity"
+            android:label="Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegistrationActivity"
+            android:label="Register" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label="Reset Password" />
+        <activity android:name=".LoginActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

@@ -1,0 +1,52 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/searchActivityTypeTV"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:hint="HINT"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="29dp"
+        android:textSize="25dp"
+        >
+
+    </TextView>
+    <EditText android:id="@+id/keywordSearchActivityTV"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/searchActivityTypeTV"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="335dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:hint="Keyword"
+        android:textColor="#636363">
+
+    </EditText>
+    <Button
+        android:id="@+id/searchActivitySearchBtn"
+        android:layout_width="335dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/btn_bck_color"
+        app:layout_constraintTop_toBottomOf="@id/keywordSearchActivityTV"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="50dp"
+        android:text="Search user"
+        android:fontFamily="SF Pro Text"
+        android:textColor="#fff"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:textAlignment="center"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

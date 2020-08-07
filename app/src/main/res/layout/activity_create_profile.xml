@@ -1,0 +1,188 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/picturebuttonCreateProfileView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="120dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/enterInformationTV"
+        android:layout_marginRight="120dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/ic_add_a_photo_black_24dp"
+        android:elevation="5dp"
+        android:padding="20dp"
+        android:scaleType="centerCrop" />
+    <TextView
+        android:id="@+id/enterInformationTV"
+        android:layout_width="335dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/picturebuttonCreateProfileView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginTop="30dp"
+        android:text="Enter profile information (The information entered on this page will be public)"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signOutBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="300dp"
+        android:text="Sign Out"
+        app:layout_constraintBottom_toTopOf="@id/picturebuttonCreateProfileView">
+    </Button>
+
+
+    <EditText android:id="@+id/userNameCreateProfileET"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/enterInformationTV"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="335dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="29dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:hint="User Name"
+        android:textColor="#6d6d6d "
+        />
+
+    <EditText android:id="@+id/createProfile_countryName_EF"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/userNameCreateProfileET"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="335dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="29dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:hint="Country"
+        android:textColor="#6d6d6d " />
+
+
+    <EditText android:id="@+id/createProfile_stateName_EF"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/createProfile_countryName_EF"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/createProfile_cityName_EF"
+        android:layout_width="155dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:hint="State"
+        android:textColor="#6d6d6d " />
+
+
+    <EditText android:id="@+id/createProfile_cityName_EF"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/createProfile_countryName_EF"
+        app:layout_constraintLeft_toRightOf="@id/createProfile_stateName_EF"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="150dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="29dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:hint="City"
+        android:textColor="#6d6d6d " />
+
+    <RadioGroup
+        android:id="@+id/radioUserType"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/createProfile_stateName_EF"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="29dp">
+
+        <RadioButton
+            android:id="@+id/radioDonor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register to donate"
+            android:checked="true"
+            android:textColor="@color/text_color"
+            android:textSize="17sp"
+            style="@style/RadioButton.Login"
+            />
+
+        <RadioButton
+            android:id="@+id/radioConsumer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register to request donation"
+            android:textColor="@color/text_color"
+            android:textSize="17sp"
+            style="@style/RadioButton.Login"/>
+
+    </RadioGroup>
+
+    <EditText android:id="@+id/consumerAbout"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioUserType"
+        android:layout_width="335dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="29dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:hint="A little about yourself"
+        android:textColor="#6d6d6d "
+        android:lines="5"
+        />
+    <Button
+        android:id="@+id/createProfile_continue_BTN"
+        android:layout_width="335dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/btn_bck_color"
+        app:layout_constraintTop_toBottomOf="@id/consumerAbout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"
+        android:text="Continue"
+        android:fontFamily="SF Pro Text"
+        android:textColor="#fff"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:textAlignment="center"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primaryOrange"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/NewtopRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/Newheader_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/orange_bluebackground" />
+
+            <ImageButton
+                android:id="@+id/Newuser_profile_photo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_below="@+id/Newheader_cover_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-60dp"
+                android:background="@drawable/user_2"
+                android:elevation="5dp"
+                android:padding="20dp"
+                android:scaleType="centerCrop" />
+
+            <RelativeLayout
+                android:id="@+id/Newprofile_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Newheader_cover_image"
+                android:background="@color/primaryBlue"
+                android:elevation="4dp">
+
+                <TextView
+                    android:id="@+id/Newconsumer_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="76dp"
+                    android:text="User Name"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/Newconsumer_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Newconsumer_profile_name"
+                    android:text="Address"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/Newconsumer_bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Newconsumer_address"
+                    android:padding="20dp"
+                    android:text="About"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#fff"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/NewmiddleLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/NewtopRelativeLayout"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="50dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/NewCLRRItemDetails"
+                    android:padding="8dp"
+                    android:background="@color/primaryOrange">
+                    <TextView
+                        android:id="@+id/NewCPPitemName"
+                        android:layout_width="120dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="Name" />
+                    <TextView
+                        android:id="@+id/NewCPPitemDate"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Required By"
+                        android:gravity="center"
+                        android:textColor="#fff"
+                        app:layout_constraintStart_toEndOf="@id/NewCPPitemName"
+                        app:layout_constraintEnd_toStartOf="@+id/NewCPPitemQuantity"
+                        app:layout_constraintTop_toTopOf="parent">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/NewCPPitemQuantity"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Quantity"
+                        android:gravity="center"
+                        android:textColor="#fff"
+                        app:layout_constraintStart_toEndOf="@+id/NewCPPitemDate"
+                        app:layout_constraintEnd_toStartOf="@id/NewCPPitemUnits"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/NewCPPitemUnits"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="Units"
+                        android:gravity="center"
+                        android:textColor="#fff"
+                        app:layout_constraintStart_toEndOf="@+id/NewCPPitemQuantity"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EEE">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Newrecycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/NewaddToCartButton"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:text="Add to Donation Cart"
+            android:backgroundTint="#fff"
+            android:textColor="@color/primaryOrange"
+            android:layout_marginTop="50dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/NewmiddleLinearLayout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

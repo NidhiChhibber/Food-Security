@@ -1,0 +1,8 @@
+<resources>
+    <!-- App -->
+    <string name="app_name">Color Reveal</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
+
+</resources>

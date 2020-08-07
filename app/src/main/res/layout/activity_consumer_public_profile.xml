@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView android:id="@+id/path_5"
+            android:src="@drawable/curvesignin3"
+            android:contentDescription="path_5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="392.99963378906dp"
+            android:layout_height="369.46105957031dp" />
+        <ImageView android:id="@+id/path_4"
+            android:src="@drawable/curvesignin2"
+            android:contentDescription="path_4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="392.75732421875dp"
+            android:layout_height="338.58865356445dp" />
+
+        <ImageView android:id="@+id/path_2"
+            android:src="@drawable/curvesignin1"
+            android:contentDescription="path_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="392.75732421875dp"
+            android:layout_height="345.30883789062dp" />
+        <ImageView android:id="@+id/path_1004"
+            android:src="@drawable/curvesignin4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="392.75726318359dp"
+            android:layout_height="338.58865356445dp" />
+
+        <ImageButton
+            android:id="@+id/user_profile_photo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="120dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="120dp"
+            android:background="@drawable/user_2"
+            android:elevation="5dp"
+            android:padding="20dp"
+            android:scaleType="centerCrop" />
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_profile_photo"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/consumer_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="User Name"
+                android:fontFamily="SF Pro Text"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/consumer_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/consumer_profile_name"
+                android:text="Gainesville, Florida, United States"
+                android:layout_centerHorizontal="true"
+                android:textColor="#fff"
+                android:fontFamily="SF Pro Text"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/consumer_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/consumer_address"
+                android:padding="10dp"
+                android:text="About"
+                android:fontFamily="SF Pro Text"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:textColor="#fff"
+                android:lines="5"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/middleLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/path_5"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="50dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/CLRRItemDetails"
+                    android:padding="8dp"
+                    android:background="@color/colorPrimary">
+                    <TextView
+                        android:id="@+id/CPPitemName"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"
+                        android:gravity="center"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="Item name" />
+                    <TextView
+                        android:id="@+id/CPPitemDate"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Required By"
+                        android:textColor="#fff"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@id/CPPitemName"
+                        app:layout_constraintEnd_toStartOf="@+id/CPPitemQuantity"
+                        app:layout_constraintTop_toTopOf="parent">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/CPPitemQuantity"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Quantity"
+                        android:textColor="#fff"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@+id/CPPitemDate"
+                        app:layout_constraintEnd_toStartOf="@id/CPPitemUnits"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/CPPitemUnits"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="Units"
+                        android:gravity="center"
+                        android:textColor="#fff"
+                        app:layout_constraintStart_toEndOf="@+id/CPPitemQuantity"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+            <ScrollView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EEE">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="200sp" />
+            </RelativeLayout>
+            </ScrollView>
+        </LinearLayout>
+        <Button
+            android:id="@+id/addToCartButton"
+            android:background="@drawable/rect_button"
+            android:text="Add to Donation Cart"
+            android:textColor="#fff"
+            android:layout_marginTop="50dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/middleLinearLayout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

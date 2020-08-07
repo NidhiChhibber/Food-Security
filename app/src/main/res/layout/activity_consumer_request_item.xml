@@ -1,0 +1,131 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <AutoCompleteTextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/consumerReqItemQuantity"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="335dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="29dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:completionThreshold="1"
+        android:hint="Item Name"
+        android:textColorHint="#6d6d6d"
+        android:textColor="#000 "
+        android:id="@+id/consumerReqItemName"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        android:paddingLeft="10dp"
+        android:singleLine="true"/>
+
+
+    <EditText
+        android:id="@+id/consumerReqItemQuantity"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/consumerReqItemName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="335dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="29dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:hint="Quantity"
+        android:textColorHint="#6d6d6d"
+        android:textColor="#000 "
+        android:singleLine="true"
+        />
+
+        <EditText
+            android:id="@+id/consumerReqItemUnits"
+            android:fontFamily="SF Pro Text"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/consumerReqItemQuantity"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="335dp"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="29dp"
+            android:layout_height="50dp"
+            android:background="@drawable/etext_button_bck"
+            android:backgroundTint="@color/edit_text_bck_color"
+            android:textColorHint="#6d6d6d"
+            android:textColor="#000 "
+            android:hint="Units"
+            android:singleLine="true"
+        />
+
+
+
+    <TextView android:id="@+id/consumerReqItemDateTV"
+        android:fontFamily="SF Pro Text"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/consumerReqItemUnits"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="335dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="29dp"
+        android:layout_height="50dp"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/edit_text_bck_color"
+        android:textColorHint="#6d6d6d"
+        android:textColor="#000 "
+        android:hint="Required by date"
+        android:singleLine="true"
+        />
+
+    <ImageButton android:id="@+id/calenderImgBtn"
+        android:src="@drawable/calender_icon"
+        app:layout_constraintTop_toTopOf="@id/consumerReqItemDateTV"
+        app:layout_constraintBottom_toBottomOf="@id/consumerReqItemDateTV"
+        app:layout_constraintLeft_toLeftOf="@id/consumerReqItemDateTV"
+        android:contentDescription="shape"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"/>
+
+
+    <Button android:id="@+id/requestBtn"
+        android:layout_width="335dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/etext_button_bck"
+        android:backgroundTint="@color/btn_bck_color"
+        app:layout_constraintTop_toBottomOf="@id/consumerReqItemDateTV"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"
+        android:fontFamily="SF Pro Text"
+        android:textColor="#fff"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        android:text="Put request"
+        />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
