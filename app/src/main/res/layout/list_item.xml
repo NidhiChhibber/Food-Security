@@ -9,7 +9,7 @@
 
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/list_item_text_view"
+        android:id="@+id/donationQueryListName"
         android:textSize="20sp"
         android:padding="10dp"
         android:layout_marginLeft="5dp"/>

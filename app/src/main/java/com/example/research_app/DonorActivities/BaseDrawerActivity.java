@@ -29,8 +29,6 @@ public class BaseDrawerActivity extends AppCompatActivity
     public TextView userNameNav;
     NavigationView navigationView;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -60,7 +58,7 @@ public class BaseDrawerActivity extends AppCompatActivity
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.nav_search:
-                        Intent in3 = new Intent(getApplicationContext(), DonorSearch.class);
+                        Intent in3 = new Intent(getApplicationContext(), DonationQueriesActivity.class);
                         startActivity(in3);
                         drawerLayout.closeDrawers();
                         break;

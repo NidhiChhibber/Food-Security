@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.TimeZone;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -45,6 +48,7 @@ import com.google.firebase.database.Transaction;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -61,10 +65,11 @@ public class DonorCart extends BaseDrawerActivity {
     CartListIAdapter adapter;
     PopupWindow popupWindow;
     ConstraintLayout cL;
-    String cName,cAdd,cAbout,cuserId;
+    String cName,cAdd,cAbout,cuserId, donorId;
     ArrayList<RequiredItemsList> userList = new ArrayList<>();
     ArrayList<RequiredItemsList> itemList = new ArrayList<>();
-
+    private MyDB mDbHelper;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,11 +82,16 @@ public class DonorCart extends BaseDrawerActivity {
         cAdd = getIntent().getStringExtra("ConsumerAddress");
         cAbout = getIntent().getStringExtra("ConsumerAbout");
         cuserId = getIntent().getStringExtra("userId");
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        donorId = user.getUid();
         tvConsumerName = (TextView) findViewById(R.id.tvConsumerName);
         donateBtn = findViewById(R.id.donateButton);
         cL = (ConstraintLayout) findViewById(R.id.cL);
         tvDonatingTo = findViewById(R.id.tvDonatingTo);
         setView();
+        mDbHelper = MyDB.getInstance(this);
+        //mDbHelper.deleteDatabase();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         donateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,20 +101,22 @@ public class DonorCart extends BaseDrawerActivity {
                 //tvConsumerName.setVisibility(View.GONE);
                 //tvDonatingTo.setVisibility(View.GONE);
                 final List<itemCartClass> finalCartList = adapter.cartList;
+                final long keyDonations = mDbHelper.addDonation(donorId,cuserId);
                 for(int i =0; i<itemList.size();i++)
                 {
                     RequiredItemsList item = itemList.get(i);
                     final String itemName = item.getName();
+                    final String unit = item.getUnits();
                     final int donationQuantity = finalCartList.get(i).getQuantity();
                     final DatabaseReference myRef = database.getReference("consumerRequests/"+cuserId+"/"+itemName);
-                    myRef.runTransaction(new Transaction.Handler() {
-                        @NonNull
-                        @Override
+                    myRef.runTransaction(new Transaction.Handler()
+                    {
+                        @NonNull @Override
                         public Transaction.Result doTransaction(@NonNull MutableData mutableData)
                         {
                             if(mutableData.getValue()==null)
                             {
-                                Log.d("Status", "Its null"+cuserId+" "+itemName);
+                                Log.d("Status", "Its null"+ cuserId +" "+ itemName);
                                 runOnUiThread(new Runnable(){
                                     public void run() {
                                         Toast.makeText(getApplicationContext(), "ITS NULL", Toast.LENGTH_LONG).show();
@@ -117,7 +129,7 @@ public class DonorCart extends BaseDrawerActivity {
                                 int oldQuantity = currentItem.getQuantity();
                                 if(oldQuantity < donationQuantity)
                                 {
-                                    Log.d("Status", "Transaction Aborted "+itemName);
+                                    Log.d("Status", "Transaction Aborted "+ itemName);
                                     return Transaction.abort();
                                 }
                                 else
@@ -130,7 +142,10 @@ public class DonorCart extends BaseDrawerActivity {
                                     {
                                         database.getReference("consumerRequests/"+cuserId).child(itemName).removeValue();
                                     }
+
                                     CreateFreeFormString.createAndSetFreeformAndItemString(cuserId);
+                                    addDonationToDB(keyDonations, itemName, donationQuantity, unit);
+                                    mDbHelper.updateNumOfDonation(donorId,cuserId);
                                     Log.d("Status", "Donated"+itemName);
                                 }
                             }
@@ -196,6 +211,18 @@ public class DonorCart extends BaseDrawerActivity {
 
         adapter = new CartListIAdapter(this, productList,cuserId );
         recyclerView.setAdapter(adapter);
+    }
+
+    private void addDonationToDB(long keyDonations, String itemName, int itemQuantity, String Units)
+    {
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
+        df.setTimeZone(tz);
+        String date = df.format(new Date());
+        String strTime = date.substring(11).trim();
+        String strDate = date.substring(0,10).trim();
+        mDbHelper.addOrder(keyDonations,itemName,itemQuantity,strDate, strTime,Units);
+        mDbHelper.closeDB();
     }
 
 
