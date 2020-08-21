@@ -29,6 +29,7 @@ public class MyDB extends SQLiteOpenHelper
     private static SQLiteDatabase mDb;
     private static final String DATABASE_NAME = "DONATIONS";
     private static final String TABLE_DONORS = "DONORS_TABLE";
+    private static final String TABLE_CONSUMERS = "CONSUMERS_TABLE";
     private static final String TABLE_DONATIONS = "D_C_TABLE";
     private static final String TABLE_ORDERS = "ORDERS_TABLE";
     private static final String TABLE_NUM_DONATIONS = "NUM_DONATIONS_TABLE";
@@ -310,12 +311,24 @@ public class MyDB extends SQLiteOpenHelper
     public Cursor topConsumer(String donorId)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + KEY_NUM_DONATION_ID+ ','+ KEY_NUM_DONATIONS_VALUE + " FROM "+TABLE_NUM_DONATIONS
+        String query = "SELECT " + KEY_NUM_DONATION_ID+ ','+ KEY_NUM_DONATIONS_CONSUMER_ID + " FROM "+TABLE_NUM_DONATIONS
                 +" WHERE "
                 + KEY_NUM_DONATIONS_DONOR_ID +" = ?"
                 + " ORDER BY "
                 + KEY_NUM_DONATIONS_VALUE+" DESC LIMIT 1";
         Cursor c = db.rawQuery( query, new String [] {donorId});
+        return c;
+    }
+
+    public Cursor topDonor(String consumerId)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + KEY_NUM_DONATION_ID+ ','+ KEY_NUM_DONATIONS_DONOR_ID + " FROM "+TABLE_NUM_DONATIONS
+                +" WHERE "
+                + KEY_NUM_DONATIONS_DONOR_ID +" = ?"
+                + " ORDER BY "
+                + KEY_NUM_DONATIONS_VALUE+" DESC LIMIT 1";
+        Cursor c = db.rawQuery( query, new String [] {consumerId});
         return c;
     }
 

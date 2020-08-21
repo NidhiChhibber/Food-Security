@@ -2,6 +2,7 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
+    android:id="@+id/registration_layout"
 xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <TextView
@@ -52,7 +53,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     android:background="@drawable/etext_button_bck"
     android:backgroundTint="@color/edit_text_bck_color"
     android:hint="Password"
-    android:textColor="#636363">
+    android:textColor="#636363"
+    android:inputType="textPassword">
 
 </EditText>
 

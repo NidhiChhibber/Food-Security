@@ -52,6 +52,7 @@
         android:background="@drawable/etext_button_bck"
         android:backgroundTint="@color/edit_text_bck_color"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="#636363">
 
     </EditText>

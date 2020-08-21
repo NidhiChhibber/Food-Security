@@ -1,5 +1,6 @@
 package com.example.research_app.DonorActivities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
@@ -11,6 +12,11 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.example.research_app.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class DonationQueriesActivity extends AppCompatActivity
 {
@@ -33,20 +39,22 @@ public class DonationQueriesActivity extends AppCompatActivity
             public void onClick(View view) {
                 String donorIdStr = donorId.getText().toString();
                 String days = donationDays.getText().toString();
-                //queryOne();
-                // 2 All D's that donate to a C
+                // 1 All consumers that donor has donated to
+                queryOne();
+                // 2 All donor's that donate to the consumer
                 //queryTwo();
-                // 3 All consumers D has donated to in last x days (modified 1)
+                // 3 All consumers the donor has donated to in last x days (modified 1)
                 //queryThree(donorIdStr,days);
-                // 4 All D's that have donated to C in last x days (modified 2)
+                // 4 All donor's that have donated to the consumer in last x days (modified 2)
                 //queryFour(donorIdStr, days);
-                // 5 D's last consumer
+                // 5 donor's last consumer
                 //queryFive(donorIdStr);
-                // 6 C's last donor
+                // 6 consumer's last donor
                 //querySix(donorIdStr);
-                // 7 D's top consumers
-                querySeven(donorIdStr);
-                // 8 C's top donors
+                // 7 donor's top consumers
+                //querySeven(donorIdStr);
+                // 8 consumer's top donors
+                //queryEight(donorIdStr);
             }
         });
 
@@ -56,6 +64,7 @@ public class DonationQueriesActivity extends AppCompatActivity
     public void queryOne()
     {
         Cursor c = mDbHelper.DonorsAllConsumers("n7MVFfzsewVY27KnwpoaP1v10SL2");
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String[] columns = new String[] {"D_C_CONSUMER"};
         int[] to = new int[]{R.id.donationQueryListName};
         attachAdapter(c,columns,to);
@@ -106,7 +115,15 @@ public class DonationQueriesActivity extends AppCompatActivity
     public void querySeven(String donorId)
     {
         Cursor c = mDbHelper.topConsumer(donorId);
-        String[] columns = new String[] {"NUM_OF_DONATIONS"};
+        String[] columns = new String[] {"KEY_NUM_DONATIONS_CONSUMER_ID"};
+        int[] to = new int[]{R.id.donationQueryListName};
+        attachAdapter(c,columns,to);
+    }
+
+    public void queryEight(String consumerId)
+    {
+        Cursor c = mDbHelper.topDonor(consumerId);
+        String[] columns = new String[] {"KEY_NUM_DONATIONS_DONOR_ID"};
         int[] to = new int[]{R.id.donationQueryListName};
         attachAdapter(c,columns,to);
     }

@@ -1,21 +1,29 @@
 package com.example.research_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.research_app.ConsumerActivities.ConsumerDash;
+import com.example.research_app.DonorActivities.DonorCart;
 import com.example.research_app.DonorActivities.DonorHome;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -42,11 +50,13 @@ public class RegistrationActivity extends AppCompatActivity
     private EditText phoneNumberEF;
     static final int GOOGLE_SIGN =123;
     private EditText emailEF, passwordEF;
-    private Button regB, logInBtn;
+    private Button regB, logInBtn, closePopupBtn;
     private ImageButton regGoogle;
     private FirebaseAuth mAuth;
     private TextView googleSigninB;
     GoogleSignInClient mGoogleSignInClient;
+    PopupWindow popupWindow;
+    ConstraintLayout regConLayout;
 
 
     @Override
@@ -79,6 +89,7 @@ public class RegistrationActivity extends AppCompatActivity
                 signInGoogle();
             }
         });
+        regConLayout = findViewById(R.id.registration_layout);
         /*findViewById(R.id.registration_continue_BTN).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,8 +147,7 @@ public class RegistrationActivity extends AppCompatActivity
                                         // email sent
                                         Log.d("Status", "EMAIL SENT");
                                         FirebaseAuth.getInstance().signOut();
-                                        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-                                        finish();
+                                        displayBox();
 
                                     }
                                     else
@@ -168,6 +178,26 @@ public class RegistrationActivity extends AppCompatActivity
         });
 
     }
+
+    public void displayBox()
+{
+    LayoutInflater layoutInflater = (LayoutInflater) RegistrationActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    View customView = layoutInflater.inflate(R.layout.pop_up_registration_complete,null);
+    closePopupBtn = (Button) customView.findViewById(R.id.popUpRegComplete_closeBox_BTN);
+    popupWindow = new PopupWindow(customView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    ((TextView)popupWindow.getContentView().findViewById(R.id.popUpRegComplete_text_EF)).setText("Registration Completed. You will be taken to the logIn page");
+    popupWindow.showAtLocation(regConLayout, Gravity.CENTER, 0, 0);
+
+    closePopupBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v)
+        {
+            popupWindow.dismiss();
+            Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+    });
+}
 
 
     protected boolean validateEntry(String strEmail, String strPassword)
